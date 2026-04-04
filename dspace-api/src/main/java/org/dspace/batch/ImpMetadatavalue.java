@@ -48,8 +48,7 @@ public class ImpMetadatavalue {
     @Column(name = "imp_qualifier", length = 128)
     private String impQualifier;
 
-    @Lob
-    @Column(name = "imp_value", length = Length.LONG32)
+    @Column(name = "imp_value", columnDefinition = "text")
     private String impValue;
 
     @Column(name = "imp_authority", length = 256)

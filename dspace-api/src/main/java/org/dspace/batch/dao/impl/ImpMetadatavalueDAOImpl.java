@@ -32,6 +32,8 @@ public class ImpMetadatavalueDAOImpl extends AbstractHibernateDAO<ImpMetadataval
         Query query = createQuery(context,
                 "SELECT m FROM ImpMetadatavalue m LEFT JOIN FETCH m.impRecord " + "WHERE m.impRecord.impId = :impId "
                         + "ORDER BY m.impMetadatavalueId, m.impSchema, m.impElement, m.impQualifier, m.metadataOrder");
+        
+        /*Query query = createQuery(context, "SELECT m FROM ImpMetadatavalue m WHERE m.impRecord.impId = :impId ORDER BY m.impMetadatavalueId, m.impSchema, m.impElement, m.impQualifier, m.metadataOrder"); */
         query.setParameter("impId", impRecord.getImpId());
 
         query.setHint("org.hibernate.cacheable", Boolean.TRUE);

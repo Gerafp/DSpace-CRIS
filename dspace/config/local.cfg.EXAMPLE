@@ -30,7 +30,7 @@
 # DSpace installation directory.
 # This is the location where you want to install DSpace.
 # Windows note: Please remember to use forward slashes for all paths (e.g. C:/dspace)
-dspace.dir=/dspace
+dspace.dir=/mnt/dspace-cris-dev/dspace-backend
 
 # Public URL of DSpace backend ('server' webapp). May require a port number if not using standard ports (80 or 443)
 # DO NOT end it with '/'.
@@ -38,7 +38,7 @@ dspace.dir=/dspace
 # NOTE: This URL must be accessible to all DSpace users (should not use 'localhost' in Production)
 # and is usually "synced" with the "rest" section in the DSpace User Interface's config.*.yml.
 # It corresponds to the URL that you would type into your browser to access the REST API.
-dspace.server.url = http://localhost:8080/server
+dspace.server.url = https://ideaspire.cloud/server
 
 # Additional URL of DSpace backend which could be used by DSpace frontend during SSR execution.
 # May require a port number if not using standard ports (80 or 443)
@@ -50,10 +50,10 @@ dspace.server.ssr.url = ${dspace.server.url}
 # This is used by the backend to provide links in emails, RSS feeds, Sitemaps, etc.
 # NOTE: this URL must be accessible to all DSpace users (should not use 'localhost' in Production).
 # It corresponds to the URL that you would type into your browser to access the User Interface.
-dspace.ui.url = http://localhost:4000
+dspace.ui.url = https://ideaspire.cloud
 
 # Name of the site
-dspace.name = DSpace at My University
+dspace.name = CRIS-UNIBE
 
 # Assetstore configurations have moved to config/modules/assetstore.cfg
 # and config/spring/api/bitstore.xml.
@@ -61,7 +61,7 @@ dspace.name = DSpace at My University
 # assetstore.dir = ${dspace.dir}/assetstore
 
 # Default language for metadata values
-#default.language = en_US
+default.language = es
 
 # Solr server/webapp.
 # DSpace uses Solr for all search/browse capability (and for usage statistics).
@@ -79,7 +79,7 @@ solr.server = http://localhost:8983/solr
 # DSpace ONLY supports PostgreSQL at this time.
 
 # URL for connecting to database
-db.url = jdbc:postgresql://localhost:5432/dspace
+db.url = jdbc:postgresql://localhost:5432/dspacecris
 
 # Database username and password
 db.username = dspace
@@ -205,7 +205,7 @@ db.password = dspace
 
 # Authentication by Password (encrypted in DSpace's database). See authentication-password.cfg for default configuration.
 # Enabled by default in authentication.cfg
-#plugin.sequence.org.dspace.authenticate.AuthenticationMethod = org.dspace.authenticate.PasswordAuthentication
+plugin.sequence.org.dspace.authenticate.AuthenticationMethod = org.dspace.authenticate.PasswordAuthentication
 
 #####################
 # REST API SETTINGS #
@@ -218,7 +218,7 @@ db.password = dspace
 # When an external authentication system is involved like Shibboleth some browsers (i.e. Safari) include
 # in the request the Origin header with the url of the IdP. In such case you need to allow also the IdP to
 # avoid trouble for such browsers (i.e.  rest.cors.allowed-origins = ${dspace.ui.url}, https://samltest.id )
-#rest.cors.allowed-origins = ${dspace.ui.url}
+rest.cors.allowed-origins = ${dspace.ui.url}, http://localhost:4000
 
 #################################################
 # SPRING BOOT SETTINGS (Used by Server Webapp)  #
@@ -232,10 +232,10 @@ db.password = dspace
 # but may be overridden in this local.cfg
 #
 # Maximum size of a single uploaded file
-#spring.servlet.multipart.max-file-size = 512MB
+spring.servlet.multipart.max-file-size = 512MB
 
 # Maximum size of a multipart request (i.e. max total size of all files in one request)
-#spring.servlet.multipart.max-request-size = 512MB
+spring.servlet.multipart.max-request-size = 512MB
 
 ##########################
 # METADATA EXTRACTION #
@@ -300,7 +300,7 @@ assetstore.s3.awsSecretKey =
 assetstore.s3.awsRegionName =
 
 #GeoIP dbfile configuration for usage statistics
-usage-statistics.dbfile=/var/lib/GeoIP/GeoLite2-City.mmdb
+usage-statistics.dbfile=${dspace.dir}/config/GeoLite2-City.mmdb
 
 ############################
 # IIIF and OCR Integration #
@@ -354,3 +354,5 @@ jwt.login.token.secret=
 
 # header access
 dspace.cli.access=
+
+proxies.trusted.ipranges=127.0.0.1, 31.97.215.176

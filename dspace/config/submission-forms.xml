@@ -63,8 +63,8 @@
       </row>
       <row>
         <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>author</dc-element>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
           <dc-qualifier>affiliation</dc-qualifier>
           <label>Affiliation</label>
           <input-type>onebox</input-type>
@@ -508,24 +508,11 @@
       <row>
         <field>
           <dc-schema>dc</dc-schema>
-          <dc-element>identifier</dc-element>
-          <label>Identifiers</label>
-          <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint>If the item has any identification numbers or codes associated with
-it, please enter the types and the actual numbers or codes.</hint>
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>dc</dc-schema>
           <dc-element>title</dc-element>
-          <label>Title</label>
+          <label>Título</label>
           <input-type>onebox</input-type>
           <repeatable>false</repeatable>
-          <required>You must enter a main title for this item.</required>
-          <hint>Enter the main title of the item.</hint>
+          <required>Debes ingresar un título principal para este elemento.</required>
         </field>
       </row>
       <row>
@@ -533,11 +520,9 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-schema>dc</dc-schema>
           <dc-element>title</dc-element>
           <dc-qualifier>alternative</dc-qualifier>
-          <label>Other Titles</label>
+          <label>Otros títulos</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required />
-          <hint>If the item has any alternative titles, please enter them here.</hint>
         </field>
       </row>
       <row>
@@ -545,13 +530,21 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-schema>dc</dc-schema>
           <dc-element>date</dc-element>
           <dc-qualifier>issued</dc-qualifier>
-          <label>Date of Issue</label>
+          <label>Fecha de publicación</label>
           <input-type>date</input-type>
           <repeatable>false</repeatable>
-          <required>You must enter at least the year.</required>
-          <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day and/or month if they aren't
-                        applicable.</hint>
+          <required>Debes ingresar al menos el año.</required>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>authors</dc-qualifier>
+          <label>Autor(es)</label>
+          <input-type>name</input-type>
+          <repeatable>true</repeatable>
+          <required>Debes ingresar al menos un autor.</required>
         </field>
       </row>
       <row>
@@ -559,23 +552,43 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-schema>dc</dc-schema>
           <dc-element>contributor</dc-element>
           <dc-qualifier>author</dc-qualifier>
-          <label>Authors</label>
+          <label>Investigadores (UNIBE)</label>
           <input-type>group</input-type>
           <repeatable>true</repeatable>
-          <required />
-          <hint>Enter the names of the authors of this item.</hint>
+          <required>Debes ingresar al menos un investigador.</required>
         </field>
       </row>
+<!--
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>affiliation</dc-qualifier>
+          <label>Afiliación</label>
+          <input-type>group</input-type>
+          <repeatable>true</repeatable>
+          <required>Debes ingresar al menos una afiliación.</required>
+        </field>
+      </row>
+-->
       <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>contributor</dc-element>
           <dc-qualifier>editor</dc-qualifier>
-          <label>Editors</label>
+          <label>Editor</label>
           <input-type>group</input-type>
           <repeatable>true</repeatable>
-          <required />
-          <hint>The editors of this publication.</hint>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>identifier</dc-element>
+          <label>Identificadores</label>
+          <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
+          <repeatable>true</repeatable>
+          <required>Debes ingresar al menos un identificador o código.</required>
         </field>
       </row>
       <row>
@@ -584,10 +597,21 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-element>type</dc-element>
           <label>Type</label>
           <input-type>onebox</input-type>
+          <input-type value-pairs-name="publication_types">dropdown</input-type>
           <repeatable>false</repeatable>
           <required>You must select a publication type</required>
           <hint>Select the type(s) of content of the item.</hint>
-          <vocabulary>publication-coar-types</vocabulary>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>identifier</dc-element>
+          <dc-qualifier>citation</dc-qualifier>
+          <label>Citation</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required></required>
         </field>
       </row>
     </form>
@@ -597,35 +621,30 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-schema>dc</dc-schema>
           <dc-element>language</dc-element>
           <dc-qualifier>iso</dc-qualifier>
-          <label>Language</label>
+          <label>Idioma</label>
           <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
           <repeatable>false</repeatable>
-          <required />
-          <hint>Select the language of the main content of the item. If the language does not appear in the list, please select 'Other'.  If the content does not really have a language (for example, if it is a dataset or an image) please select 'N/A'.</hint>
+          <required>Debes seleccionar el idioma del contenido principal del ítem.</required>
         </field>
       </row>
       <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
-          <label>Subject Keywords</label>
-          <input-type>tag</input-type>
+          <label>Área de investigación</label>
+          <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required />
-          <hint>Type the appropriate keyword or phrase and press Enter to add it.</hint>
+          <required>Debes ingresar al menos un área de investigación.</required>
         </field>
       </row>
       <row>
         <field>
-          <dc-schema>datacite</dc-schema>
+          <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
-          <dc-qualifier>fos</dc-qualifier>
-          <label>Fields of Science and Technology (OECD)</label>
+          <dc-qualifier>keywords</dc-qualifier>
+          <label>Palabras clave</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required />
-          <hint />
-          <vocabulary closed="true">oecd</vocabulary>
         </field>
       </row>
       <row>
@@ -633,11 +652,20 @@ it, please enter the types and the actual numbers or codes.</hint>
           <dc-schema>dc</dc-schema>
           <dc-element>description</dc-element>
           <dc-qualifier>abstract</dc-qualifier>
-          <label>Abstract</label>
+          <label>Resumen</label>
           <input-type>textarea</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint>Enter the abstract of the item.</hint>
+          <repeatable>true</repeatable>
+          <hint>Escriba el resumen del ítem.</hint>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>publisher</dc-element>
+          <label>Editorial</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
+          <hint>Escriba la editorial del ítem.</hint>
         </field>
       </row>
     </form>
@@ -899,8 +927,7 @@ it, please enter the types and the actual numbers or codes.</hint>
           <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
           <repeatable>true</repeatable>
           <required />
-          <hint>If the item has any identification numbers or codes associated with
-it, please enter the types and the actual numbers or codes.</hint>
+          <hint>If the item has any identification numbers or codes associated with it, please enter the types and the actual numbers or codes.</hint>
         </field>
       </row>
       <row>
@@ -2548,47 +2575,34 @@ it, please enter the types and the actual numbers or codes.</hint>
         <stored-value>doi</stored-value>
       </pair>
       <pair>
-        <displayed-value>Scopus ID</displayed-value>
-        <stored-value>scopus</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>WOS ID</displayed-value>
-        <stored-value>isi</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Pubmed ID</displayed-value>
-        <stored-value>pmid</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>arXiv ID</displayed-value>
-        <stored-value>arxiv</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Other</displayed-value>
-        <stored-value>other</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>ISMN</displayed-value>
-        <stored-value>ismn</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Gov't Doc #</displayed-value>
-        <stored-value>govdoc</stored-value>
+        <displayed-value>URL</displayed-value>
+        <stored-value>url</stored-value>
       </pair>
       <pair>
         <displayed-value>URI</displayed-value>
         <stored-value>uri</stored-value>
       </pair>
       <pair>
+        <displayed-value>Article Number</displayed-value>
+        <stored-value>article_number</stored-value>
+      </pair>
+      <pair>
         <displayed-value>ISBN</displayed-value>
         <stored-value>isbn</stored-value>
       </pair>
       <pair>
-        <displayed-value>Ads Code</displayed-value>
-        <stored-value>adsbibcode</stored-value>
+        <displayed-value>Scopus Number</displayed-value>
+        <stored-value>scopus</stored-value>
       </pair>
-    </value-pairs>
-    <value-pairs value-pairs-name="common_types" dc-term="common_types">
+      <pair>
+        <displayed-value>Pubmed ID</displayed-value>
+        <stored-value>pmid</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>PMC ID</displayed-value>
+        <stored-value>pmcid</stored-value>
+      </pair>    
+    </value-pairs>    <value-pairs value-pairs-name="common_types" dc-term="common_types">
       <pair>
         <displayed-value>Animation</displayed-value>
         <stored-value>Animation</stored-value>
@@ -2680,44 +2694,24 @@ it, please enter the types and the actual numbers or codes.</hint>
     </value-pairs>
     <value-pairs value-pairs-name="common_iso_languages" dc-term="common_iso_languages">
       <pair>
-        <displayed-value>N/A</displayed-value>
-        <stored-value />
-      </pair>
-      <pair>
-        <displayed-value>English (United States)</displayed-value>
-        <stored-value>en_US</stored-value>
-      </pair>
-      <pair>
         <displayed-value>English</displayed-value>
         <stored-value>en</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Spanish</displayed-value>
-        <stored-value>es</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>German</displayed-value>
-        <stored-value>de</stored-value>
       </pair>
       <pair>
         <displayed-value>French</displayed-value>
         <stored-value>fr</stored-value>
       </pair>
       <pair>
+        <displayed-value>German</displayed-value>
+        <stored-value>de</stored-value>
+      </pair>
+      <pair>
         <displayed-value>Italian</displayed-value>
         <stored-value>it</stored-value>
       </pair>
       <pair>
-        <displayed-value>Japanese</displayed-value>
-        <stored-value>ja</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Chinese</displayed-value>
-        <stored-value>zh</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Turkish</displayed-value>
-        <stored-value>tr</stored-value>
+        <displayed-value>Spanish</displayed-value>
+        <stored-value>es</stored-value>
       </pair>
       <pair>
         <displayed-value>(Other)</displayed-value>
@@ -2732,176 +2726,152 @@ it, please enter the types and the actual numbers or codes.</hint>
     </value-pairs>
     <value-pairs value-pairs-name="publication_types" dc-term="publication_types">
       <pair>
-        <displayed-value>Text</displayed-value>
-        <stored-value>text</stored-value>
+        <displayed-value>Annotation</displayed-value>
+        <stored-value>Annotation</stored-value>
       </pair>
       <pair>
-        <displayed-value>Annotation</displayed-value>
-        <stored-value>annotation</stored-value>
+        <displayed-value>Article</displayed-value>
+        <stored-value>Article</stored-value>
       </pair>
       <pair>
         <displayed-value>Bibliography</displayed-value>
-        <stored-value>bibliography</stored-value>
+        <stored-value>Bibliography</stored-value>
       </pair>
       <pair>
         <displayed-value>Book</displayed-value>
-        <stored-value>book</stored-value>
+        <stored-value>Book</stored-value>
       </pair>
       <pair>
-        <displayed-value>Book Part</displayed-value>
-        <stored-value>book part</stored-value>
+        <displayed-value>Book part</displayed-value>
+        <stored-value>Book part</stored-value>
       </pair>
       <pair>
-        <displayed-value>Conference Object</displayed-value>
-        <stored-value>conference object</stored-value>
+        <displayed-value>Book review</displayed-value>
+        <stored-value>Book review</stored-value>
       </pair>
       <pair>
-        <displayed-value>Conference Proceedings</displayed-value>
-        <stored-value>conference proceedings</stored-value>
+        <displayed-value>Conference object</displayed-value>
+        <stored-value>Conference object</stored-value>
       </pair>
       <pair>
-        <displayed-value>Conference Paper</displayed-value>
-        <stored-value>conference paper</stored-value>
+        <displayed-value>Conference paper</displayed-value>
+        <stored-value>Conference paper</stored-value>
       </pair>
       <pair>
-        <displayed-value>Conference Poster</displayed-value>
-        <stored-value>conference poster</stored-value>
+        <displayed-value>Conference paper not in proceedings</displayed-value>
+        <stored-value>Conference paper not in proceedings</stored-value>
       </pair>
       <pair>
-        <displayed-value>Conference Paper not in Proceedings</displayed-value>
-        <stored-value>conference paper not in proceedings</stored-value>
+        <displayed-value>Conference poster</displayed-value>
+        <stored-value>Conference poster</stored-value>
       </pair>
       <pair>
-        <displayed-value>Conference Poster not in Proceedings</displayed-value>
-        <stored-value>conference poster not in proceedings</stored-value>
+        <displayed-value>Conference poster not in proceedings</displayed-value>
+        <stored-value>Conference poster not in proceedings</stored-value>
       </pair>
       <pair>
-        <displayed-value>Lecture</displayed-value>
-        <stored-value>lecture</stored-value>
+        <displayed-value>Conference proceedings</displayed-value>
+        <stored-value>Conference proceedings</stored-value>
       </pair>
       <pair>
-        <displayed-value>Letter</displayed-value>
-        <stored-value>letter</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Periodical</displayed-value>
-        <stored-value>periodical</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Journal</displayed-value>
-        <stored-value>journal</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Contribution to Journal</displayed-value>
-        <stored-value>contribution to journal</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Journal Article</displayed-value>
-        <stored-value>journal article</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Review Article</displayed-value>
-        <stored-value>review article</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Research Article</displayed-value>
-        <stored-value>research article</stored-value>
+        <displayed-value>Dataset</displayed-value>
+        <stored-value>Dataset</stored-value>
       </pair>
       <pair>
         <displayed-value>Editorial</displayed-value>
-        <stored-value>editorial</stored-value>
+        <stored-value>Editorial</stored-value>
       </pair>
       <pair>
-        <displayed-value>Data Paper</displayed-value>
-        <stored-value>data paper</stored-value>
+        <displayed-value>Image</displayed-value>
+        <stored-value>Image</stored-value>
       </pair>
       <pair>
-        <displayed-value>Letter to the Editor</displayed-value>
-        <stored-value>letter to the editor</stored-value>
+        <displayed-value>Internal report</displayed-value>
+        <stored-value>Internal report</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Journal</displayed-value>
+        <stored-value>Journal</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Journal article</displayed-value>
+        <stored-value>Journal article</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Lecture</displayed-value>
+        <stored-value>Lecture</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Letter to the editor</displayed-value>
+        <stored-value>Letter to the editor</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Other</displayed-value>
+        <stored-value>Other</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Patent</displayed-value>
+        <stored-value>Patent</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Periodical</displayed-value>
+        <stored-value>Periodical</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Physical object</displayed-value>
+        <stored-value>Physical object</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Policy report</displayed-value>
+        <stored-value>Policy report</stored-value>
       </pair>
       <pair>
         <displayed-value>Preprint</displayed-value>
-        <stored-value>preprint</stored-value>
+        <stored-value>Preprint</stored-value>
       </pair>
       <pair>
-        <displayed-value>Report</displayed-value>
-        <stored-value>report</stored-value>
+        <displayed-value>Presentation</displayed-value>
+        <stored-value>Presentation</stored-value>
       </pair>
       <pair>
-        <displayed-value>Report Part</displayed-value>
-        <stored-value>report part</stored-value>
+        <displayed-value>Project deliverable</displayed-value>
+        <stored-value>Project deliverable</stored-value>
       </pair>
       <pair>
-        <displayed-value>Internal Report</displayed-value>
-        <stored-value>internal report</stored-value>
+        <displayed-value>Report to funding agency</displayed-value>
+        <stored-value>Report to funding agency</stored-value>
       </pair>
       <pair>
-        <displayed-value>Memorandum</displayed-value>
-        <stored-value>memorandum</stored-value>
+        <displayed-value>Research proposal</displayed-value>
+        <stored-value>Research proposal</stored-value>
       </pair>
       <pair>
-        <displayed-value>Other Type of Report</displayed-value>
-        <stored-value>other type of report</stored-value>
+        <displayed-value>Research report</displayed-value>
+        <stored-value>Research report</stored-value>
       </pair>
       <pair>
-        <displayed-value>Policy Report</displayed-value>
-        <stored-value>policy report</stored-value>
+        <displayed-value>Review article</displayed-value>
+        <stored-value>Review article</stored-value>
       </pair>
       <pair>
-        <displayed-value>Project Deliverable</displayed-value>
-        <stored-value>project deliverable</stored-value>
+        <displayed-value>Software</displayed-value>
+        <stored-value>Software</stored-value>
       </pair>
       <pair>
-        <displayed-value>Report to Funding Agency</displayed-value>
-        <stored-value>report to funding agency</stored-value>
+        <displayed-value>Technical documentation</displayed-value>
+        <stored-value>Technical documentation</stored-value>
       </pair>
       <pair>
-        <displayed-value>Research Report</displayed-value>
-        <stored-value>research report</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Technical Report</displayed-value>
-        <stored-value>technical report</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Research Proposal</displayed-value>
-        <stored-value>research proposal</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Review</displayed-value>
-        <stored-value>review</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Book Review</displayed-value>
-        <stored-value>book review</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Technical Documentation</displayed-value>
-        <stored-value>technical documentation</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Working Paper</displayed-value>
-        <stored-value>working paper</stored-value>
+        <displayed-value>Technical report</displayed-value>
+        <stored-value>Technical report</stored-value>
       </pair>
       <pair>
         <displayed-value>Thesis</displayed-value>
-        <stored-value>thesis</stored-value>
+        <stored-value>Thesis</stored-value>
       </pair>
       <pair>
-        <displayed-value>Bachelor Thesis</displayed-value>
-        <stored-value>bachelor thesis</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Doctoral Thesis</displayed-value>
-        <stored-value>doctoral thesis</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Master Thesis</displayed-value>
-        <stored-value>master thesis</stored-value>
-      </pair>
-      <pair>
-        <displayed-value>Musical Notation</displayed-value>
-        <stored-value>musical notation</stored-value>
+        <displayed-value>Working paper</displayed-value>
+        <stored-value>Working paper</stored-value>
       </pair>
     </value-pairs>
     <value-pairs value-pairs-name="currency" dc-term="currency">
@@ -4214,6 +4184,29 @@ it, please enter the types and the actual numbers or codes.</hint>
       <pair>
         <displayed-value>Personal Picture</displayed-value>
         <stored-value>personal picture</stored-value>
+      </pair>
+    </value-pairs>
+    <!-- UNIBE "subject_keywords"-->
+    <value-pairs value-pairs-name="subject_keywords_unibe" dc-term="subject_keywords_unibe">
+      <pair>
+        <displayed-value>Artes y Humanidades</displayed-value>
+        <stored-value>Artes y Humanidades</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ciencias de la Salud</displayed-value>
+        <stored-value>Ciencias de la Salud</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ciencias Físicas</displayed-value>
+        <stored-value>Ciencias Físicas</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ciencias Sociales</displayed-value>
+        <stored-value>Ciencias Sociales</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Ingeniería y Tecnología</displayed-value>
+        <stored-value>Ingeniería y Tecnología</stored-value>
       </pair>
     </value-pairs>
   </form-value-pairs>
