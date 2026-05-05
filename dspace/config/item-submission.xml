@@ -128,6 +128,16 @@
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
+    <step-definition id="project_funding" mandatory="true">
+      <heading>submit.progressbar.describe.project_funding</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+    <step-definition id="project_impactdata" mandatory="true">
+      <heading>submit.progressbar.describe.project_impactdata</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
     <step-definition id="journal" mandatory="true">
       <heading>submit.progressbar.describe.journal</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -170,6 +180,11 @@
     </step-definition>
     <step-definition id="person" mandatory="true">
       <heading>submit.progressbar.describe.person</heading>
+      <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+      <type>submission-form</type>
+    </step-definition>
+    <step-definition id="person_connected-papers" mandatory="true">
+      <heading>submit.progressbar.describe.person_connected-papers</heading>
       <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
       <type>submission-form</type>
     </step-definition>
@@ -265,6 +280,8 @@
     <submission-process name="project">
       <step id="collection" />
       <step id="project" />
+      <step id="project_funding" />
+      <step id="project_impactdata" />
       <step id="correction" />
       <step id="detect-duplicate" />
       <step id="upload" />
@@ -272,6 +289,8 @@
     </submission-process>
     <submission-process name="project-edit">
       <step id="project" />
+      <step id="project_funding" />
+      <step id="project_impactdata" />
       <step id="upload" />
     </submission-process>
     <submission-process name="journal">
@@ -311,6 +330,7 @@
     <submission-process name="person">
       <step id="collection" />
       <step id="person" />
+      <step id="person_connected-papers" />
       <step id="custom-url" />
       <step id="correction" />
       <step id="detect-duplicate" />
@@ -319,11 +339,13 @@
     </submission-process>
     <submission-process name="person-edit">
       <step id="person" />
+      <step id="person_connected-papers" />
       <step id="custom-url" />
       <step id="upload" />
     </submission-process>
     <submission-process name="admin-person-edit">
       <step id="person" />
+      <step id="person_connected-papers" />
       <step id="custom-url" />
       <step id="owner" />
       <step id="upload" />

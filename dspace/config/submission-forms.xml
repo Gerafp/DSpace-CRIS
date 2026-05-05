@@ -558,19 +558,7 @@
           <required>Debes ingresar al menos un investigador.</required>
         </field>
       </row>
-<!--
-      <row>
-        <field>
-          <dc-schema>dc</dc-schema>
-          <dc-element>contributor</dc-element>
-          <dc-qualifier>affiliation</dc-qualifier>
-          <label>Afiliación</label>
-          <input-type>group</input-type>
-          <repeatable>true</repeatable>
-          <required>Debes ingresar al menos una afiliación.</required>
-        </field>
-      </row>
--->
+
       <row>
         <field>
           <dc-schema>dc</dc-schema>
@@ -1413,43 +1401,31 @@
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>title</dc-element>
+          <label>Nombre</label>
+          <input-type>name</input-type>
+          <repeatable>false</repeatable>
+          <required></required>
+          <hint>Nombre usado para el perfil del investigador. Se recomienda usar el formato "Apellido, Nombre" o "Apellido, Iniciales".</hint>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>crisrp</dc-schema>
+          <dc-element>name</dc-element>
           <label>Preferred Name</label>
           <input-type>name</input-type>
           <repeatable>false</repeatable>
-          <required>You must enter least at the Surname.</required>
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>name</dc-element>
-          <label>Fullname</label>
-          <input-type>name</input-type>
-          <repeatable>false</repeatable>
           <required />
-          <hint />
+          <hint>Nombre –normalizado– utilizado en publicaciones</hint>
         </field>
       </row>
       <row>
         <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>name</dc-element>
-          <dc-qualifier>translated</dc-qualifier>
-          <label>Vernacular Name</label>
-          <input-type>name</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>name</dc-element>
-          <dc-qualifier>variant</dc-qualifier>
-          <label>Variants</label>
-          <input-type>name</input-type>
+          <dc-schema>person</dc-schema>
+          <dc-element>affiliation</dc-element>
+          <dc-qualifier>name</dc-qualifier>
+          <label>Main Affiliation</label>
+          <input-type>onebox</input-type>
           <repeatable>true</repeatable>
           <required />
           <hint />
@@ -1457,42 +1433,12 @@
       </row>
       <row>
         <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>givenName</dc-element>
-          <label>First name</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-        <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>familyName</dc-element>
-          <label>Family name</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>birthDate</dc-element>
-          <label>Birth Date</label>
-          <input-type>date</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-        <field>
           <dc-schema>oairecerif</dc-schema>
           <dc-element>person</dc-element>
-          <dc-qualifier>gender</dc-qualifier>
-          <label>Gender</label>
-          <input-type value-pairs-name="gender">dropdown</input-type>
-          <repeatable>false</repeatable>
-          <required />
+          <dc-qualifier>affiliation</dc-qualifier>
+          <label>Estado de la afiliación</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
           <hint />
         </field>
       </row>
@@ -1501,30 +1447,19 @@
           <dc-schema>person</dc-schema>
           <dc-element>jobTitle</dc-element>
           <label>Job Title</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-        <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>affiliation</dc-element>
-          <dc-qualifier>name</dc-qualifier>
-          <label>Main Affiliation</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
+          <input-type value-pairs-name="job_titles">dropdown</input-type>
+          <repeatable>true</repeatable>
           <required />
           <hint />
         </field>
       </row>
       <row>
         <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>workgroup</dc-element>
-          <label>Working group(s)</label>
+          <dc-schema>person</dc-schema>
+          <dc-element>dedicacion</dc-element>
+          <label>Dedicación</label>
           <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required />
+          <repeatable>false</repeatable>
           <hint />
         </field>
       </row>
@@ -1534,10 +1469,73 @@
           <dc-element>identifier</dc-element>
           <dc-qualifier>url</dc-qualifier>
           <label>Personal Site(s)</label>
-          <input-type>link</input-type>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <hint>(Google Scholar Profile, ORCID Profile, Scopus Profile, otros)</hint>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>subject</dc-element>
+          <label>Intereses</label>
+          <input-type>tag</input-type>
           <repeatable>true</repeatable>
           <required />
           <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>catcarrera</dc-element>
+          <label>Categoría CNI/MESCYT</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>catcarrera</dc-element>
+          <dc-qualifier>cnino</dc-qualifier>
+          <label>No. CNI/MESCYT</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>identifier</dc-element>
+          <dc-qualifier>orcid</dc-qualifier>
+          <label>ORCID</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>identifier</dc-element>
+          <dc-qualifier>scopus-author-id</dc-qualifier>
+          <label>Scopus Author ID</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>identifier</dc-element>
+          <dc-qualifier>rid</dc-qualifier>
+          <label>Web of Science ResearcherID</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+        <field>
+          <dc-schema>person</dc-schema>
+          <dc-element>identifier</dc-element>
+          <dc-qualifier>gsid</dc-qualifier>
+          <label>Google Scholar ID</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
         </field>
       </row>
       <row>
@@ -1554,118 +1552,19 @@
       <row>
         <field>
           <dc-schema>dc</dc-schema>
-          <dc-element>subject</dc-element>
-          <label>Interest(s)</label>
-          <input-type>tag</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>datacite</dc-schema>
-          <dc-element>subject</dc-element>
-          <dc-qualifier>fos</dc-qualifier>
-          <label>Fields of Science and Technology (OECD)</label>
-          <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-          <vocabulary closed="true">oecd</vocabulary>
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>identifier</dc-element>
-          <dc-qualifier>orcid</dc-qualifier>
-          <label>ORCID</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint>Settable by connecting the entity with ORCID</hint>
-          <readonly>all</readonly>
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>identifier</dc-element>
-          <dc-qualifier>scopus-author-id</dc-qualifier>
-          <label>Scopus Author ID</label>
-          <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>person</dc-schema>
-          <dc-element>identifier</dc-element>
-          <dc-qualifier>rid</dc-qualifier>
-          <label>Researcher ID</label>
-          <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>person</dc-element>
-          <dc-qualifier>affiliation</dc-qualifier>
-          <label>Affiliation(s)</label>
-          <input-type>inline-group</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>dc</dc-schema>
           <dc-element>description</dc-element>
           <dc-qualifier>abstract</dc-qualifier>
-          <label>Biography</label>
+          <label>Trayectoria académica</label>
           <input-type>textarea</input-type>
           <repeatable>false</repeatable>
-          <required />
           <hint />
         </field>
-      </row>
-      <row>
         <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>education</dc-element>
-          <label>Education(s)</label>
-          <input-type>inline-group</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>country</dc-element>
-          <label>Country</label>
-          <input-type value-pairs-name="common_iso_countries">dropdown</input-type>
+          <dc-schema>person</dc-schema>
+          <dc-element>award</dc-element>
+          <label>Premios o reconocimientos</label>
+          <input-type>textarea</input-type>
           <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crisrp</dc-schema>
-          <dc-element>qualification</dc-element>
-          <label>Qualification(s)</label>
-          <input-type>inline-group</input-type>
-          <repeatable>true</repeatable>
-          <required />
           <hint />
         </field>
       </row>
@@ -1682,26 +1581,34 @@
       </row>
       <row>
         <field>
-          <dc-schema>cris</dc-schema>
-          <dc-element>policy</dc-element>
-          <dc-qualifier>eperson</dc-qualifier>
-          <label>Eperson Policy</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
+          <dc-schema>person</dc-schema>
+          <dc-element>knowsAbout</dc-element>
+          <label>Temas de investigación</label>
+          <input-type>tag</input-type>
+          <repeatable>true</repeatable>
           <hint />
         </field>
       </row>
       <row>
         <field>
-          <dc-schema>cris</dc-schema>
-          <dc-element>policy</dc-element>
-          <dc-qualifier>group</dc-qualifier>
-          <label>Group Policy</label>
+          <dc-schema>person</dc-schema>
+          <dc-element>identifier</dc-element>
+          <dc-qualifier>other</dc-qualifier>
+          <label>Documento de identidad</label>
           <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
           <hint />
+        </field>
+      </row>
+    </form>
+    <form name="person_connected-papers">
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>relation</dc-element>
+          <dc-qualifier>uri</dc-qualifier>
+          <label>Connected Papers</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
         </field>
       </row>
     </form>
@@ -1846,7 +1753,7 @@
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>title</dc-element>
-          <label>Project title</label>
+          <label>Título del proyecto</label>
           <input-type>onebox</input-type>
           <repeatable>false</repeatable>
           <required>You must enter the project name.</required>
@@ -1857,76 +1764,20 @@
         <field>
           <dc-schema>oairecerif</dc-schema>
           <dc-element>acronym</dc-element>
-          <label>Project Acronym</label>
+          <label>Acrónimo</label>
           <input-type>onebox</input-type>
           <repeatable>false</repeatable>
-          <required />
           <hint />
         </field>
       </row>
       <row>
         <field>
-          <dc-schema>crispj</dc-schema>
-          <dc-element>coordinator</dc-element>
-          <label>Consortium Coordinator(s)</label>
-          <input-type>onebox</input-type>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier>abstract</dc-qualifier>
+          <label>Resumen</label>
+          <input-type>textarea</input-type>
           <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>internalid</dc-element>
-          <label>Internal project ID</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crispj</dc-schema>
-          <dc-element>partnerou</dc-element>
-          <label>Partner Organization(s)</label>
-          <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crispj</dc-schema>
-          <dc-element>investigator</dc-element>
-          <label>Project Coordinator</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required>You must enter the project coordinator.</required>
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crispj</dc-schema>
-          <dc-element>openaireid</dc-element>
-          <label>OpenAIRE ID</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crispj</dc-schema>
-          <dc-element>organization</dc-element>
-          <label>Participant Organization(s)</label>
-          <input-type>onebox</input-type>
-          <repeatable>true</repeatable>
-          <required />
           <hint />
         </field>
       </row>
@@ -1938,96 +1789,16 @@
           <label>Project URL</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required />
           <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>oamandate</dc-element>
-          <label>OA Mandate</label>
-          <input-type value-pairs-name="truefalse">dropdown</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>oamandate</dc-element>
-          <dc-qualifier>url</dc-qualifier>
-          <label>OA Policy URL</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>project</dc-element>
-          <dc-qualifier>startDate</dc-qualifier>
-          <label>Start date</label>
-          <input-type>date</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>project</dc-element>
-          <dc-qualifier>endDate</dc-qualifier>
-          <label>Expected Completion</label>
-          <input-type>date</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>oairecerif</dc-schema>
-          <dc-element>project</dc-element>
-          <dc-qualifier>status</dc-qualifier>
-          <label>Status</label>
-          <input-type>onebox</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
+      </field>
       </row>
       <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>type</dc-element>
-          <label>Project type</label>
-          <input-type value-pairs-name="project_types">dropdown</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>dc</dc-schema>
-          <dc-element>description</dc-element>
-          <dc-qualifier>abstract</dc-qualifier>
-          <label>Abstract</label>
-          <input-type>textarea</input-type>
-          <repeatable>false</repeatable>
-          <required />
-          <hint />
-        </field>
-      </row>
-      <row>
-        <field>
-          <dc-schema>crispj</dc-schema>
-          <dc-element>coinvestigators</dc-element>
-          <label>Co-Investigator(s)</label>
+          <label>Tipo</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
-          <required />
           <hint />
         </field>
       </row>
@@ -2035,7 +1806,7 @@
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
-          <label>Keyword(s)</label>
+          <label>Área de Investigación</label>
           <input-type>tag</input-type>
           <repeatable>true</repeatable>
           <required />
@@ -2044,27 +1815,197 @@
       </row>
       <row>
         <field>
-          <dc-schema>datacite</dc-schema>
+          <dc-schema>dc</dc-schema>
           <dc-element>subject</dc-element>
-          <dc-qualifier>fos</dc-qualifier>
-          <label>Fields of Science and Technology (OECD)</label>
-          <input-type>onebox</input-type>
+          <dc-qualifier>classification</dc-qualifier>
+          <label>Tema de Investigación</label>
+          <input-type>tag</input-type>
           <repeatable>true</repeatable>
-          <required />
           <hint />
-          <vocabulary closed="true">oecd</vocabulary>
         </field>
       </row>
       <row>
         <field>
           <dc-schema>dc</dc-schema>
           <dc-element>relation</dc-element>
-          <dc-qualifier>equipment</dc-qualifier>
-          <label>Uses equipment(s)</label>
+          <dc-qualifier>ispartof</dc-qualifier>
+          <label>Área de impacto</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
+          <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>cris</dc-schema>
+          <dc-element>orgunit</dc-element>
+          <label>Unidad de investigación</label>
           <input-type>onebox</input-type>
           <repeatable>true</repeatable>
           <required />
           <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>collaboratinginstitution</dc-element>
+          <label>Instituciones colaboradoras</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
+          <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>author</dc-qualifier>
+          <label>Investigador principal</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required></required>
+          <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>advisor</dc-qualifier>
+          <label>Coinvestigador(es)</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required></required>
+          <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>external</dc-qualifier>
+          <label>Coinvestigador(es) externos</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required></required>
+          <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>contributor</dc-element>
+          <dc-qualifier>assistant</dc-qualifier>
+          <label>Asistentes</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+          <required></required>
+          <hint />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier>status</dc-qualifier>
+          <label>Estatus</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>date</dc-element>
+          <dc-qualifier>duration</dc-qualifier>
+          <label>Duración</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>startDate</dc-element>
+          <label>Fecha de inicio</label>
+          <input-type>date</input-type>
+          <repeatable>false</repeatable>
+        </field>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>endDate</dc-element>
+          <label>Fecha de término</label>
+          <input-type>date</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+    </form>
+    <form name="project_funding">
+      <row>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>name</dc-element>
+          <label>Nombre del fondo</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>identifier</dc-element>
+          <label>Código</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>funder</dc-element>
+          <dc-qualifier>name</dc-qualifier>
+          <label>Organismo financiador</label>
+          <input-type>onebox</input-type>
+          <repeatable>true</repeatable>
+          <required />
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>grant</dc-element>
+          <dc-qualifier>type</dc-qualifier>
+          <label>Tipo de financiación</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>project</dc-schema>
+          <dc-element>amount</dc-element>
+          <label>Monto</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+    </form>
+    <form name="project_impactdata">
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>description</dc-element>
+          <dc-qualifier>sponsorship</dc-qualifier>
+          <label>Necesidad a que responde</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
+        </field>
+      </row>
+      <row>
+        <field>
+          <dc-schema>dc</dc-schema>
+          <dc-element>relation</dc-element>
+          <dc-qualifier>isreferencedby</dc-qualifier>
+          <label>Titulación relacionada</label>
+          <input-type>onebox</input-type>
+          <repeatable>false</repeatable>
         </field>
       </row>
     </form>
@@ -4207,6 +4148,37 @@
       <pair>
         <displayed-value>Ingeniería y Tecnología</displayed-value>
         <stored-value>Ingeniería y Tecnología</stored-value>
+      </pair>
+    </value-pairs>
+
+    <value-pairs value-pairs-name="job_titles" dc-term="job_titles">
+      <pair>
+        <displayed-value>Investigador(a)</displayed-value>
+        <stored-value>Investigador(a)</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Docente</displayed-value>
+        <stored-value>Docente</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Estudiante</displayed-value>
+        <stored-value>Estudiante</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Asistente de investigación</displayed-value>
+        <stored-value>Asistente de investigación</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Director(a)</displayed-value>
+        <stored-value>Director(a)</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Vicerector(a)</displayed-value>
+        <stored-value>Vicerector(a)</stored-value>
+      </pair>
+      <pair>
+        <displayed-value>Rector(a)</displayed-value>
+        <stored-value>Rector(a)</stored-value>
       </pair>
     </value-pairs>
   </form-value-pairs>

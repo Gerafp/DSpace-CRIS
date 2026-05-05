@@ -53,7 +53,9 @@ public class ScopusPersonRestConnector {
     private String sendRequest(String id)
             throws IOException {
         StringBuilder requestUrl = new StringBuilder(url);
+        log.info("Sending request to Scopus API for author id: " + id);
         requestUrl.append(id);
+        log.info("Request URL: " + requestUrl.toString());
         if (StringUtils.isNotBlank(viewMode)) {
             requestUrl.append("?view=" + viewMode);
         }
@@ -71,7 +73,7 @@ public class ScopusPersonRestConnector {
 
             String content = getResponseContent(response);
             int statusCode = response.getStatusLine().getStatusCode();
-
+            log.info("Response status code: " + statusCode);
             if (statusCode != HttpStatus.SC_OK) {
                 log.warn("The response to the request " + requestUrl.toString() + " has status " + statusCode
                     + ". Content:" + content);
