@@ -11,6 +11,7 @@
                 <ref bean="sectionfundings_and_projects" />
                 <ref bean="sectionresearchoutputs" />
                 <ref bean="sectionpatente" />
+                <ref bean="sectionsoftware" />
                 <ref bean="sectionsite" />
             </list>
         </property>
@@ -41,13 +42,6 @@
                     </bean>
                 </list>
                 <list>
-                    <bean class="org.dspace.layout.CrisLayoutTopComponent">
-                        <property name="discoveryConfigurationName" value="researchoutputs" />
-                        <property name="sortField" value="dc.date.accessioned" />
-                        <property name="order" value="desc" />
-                        <property name="style" value="col-md-6"/>
-                        <property name="numberOfItems" value="5"/>
-                    </bean>
                     <bean class="org.dspace.layout.CrisLayoutTopComponent">
                         <property name="discoveryConfigurationName" value="researchoutputs" />
                         <property name="sortField" value="metric.view" />
@@ -114,15 +108,6 @@
                     </bean>
                 </list>
                 <list>
-                    <bean class="org.dspace.layout.CrisLayoutTopComponent">
-                        <property name="discoveryConfigurationName" value="person" />
-                        <property name="sortField" value="dc.date.accessioned" />
-                        <property name="order" value="desc" />
-                        <property name="style" value="col-md-6"/>
-                        <property name="numberOfItems" value="10"/>
-                    </bean>
-                </list>
-                <list>
                     <bean class="org.dspace.layout.CrisLayoutFacetComponent">
                         <property name="discoveryConfigurationName" value="person" />
                         <property name="style" value="col-md-12"/>
@@ -167,16 +152,9 @@
                 <bean class="org.dspace.layout.CrisLayoutSearchComponent">
                     <property name="discoveryConfigurationName" value="orgunit" />
                     <property name="style" value="col-md-12"/>
-                    <property name="searchType" value="basic"/>
-                    <property name="displayTitle" value="true"/>
                 </bean>
-                <bean class="org.dspace.layout.CrisLayoutTopComponent">
-                        <property name="discoveryConfigurationName" value="orgunit" />
-                        <property name="sortField" value="dc.date.accessioned" />
-                        <property name="order" value="desc" />
-                        <property name="style" value="col-md-6"/>
-                        <property name="numberOfItems" value="10"/>
-                </bean>
+            </list>
+            <list>
                 <bean class="org.dspace.layout.CrisLayoutFacetComponent">
                     <property name="discoveryConfigurationName" value="orgunit" />
                     <property name="style" value="col-md-12"/>
@@ -195,9 +173,9 @@
                 <bean class="org.dspace.layout.CrisLayoutSearchComponent">
                     <property name="discoveryConfigurationName" value="patente" />
                     <property name="style" value="col-md-12"/>
-                    <property name="searchType" value="basic"/>
-                    <property name="displayTitle" value="true"/>
                 </bean>
+            </list>
+            <list>
                 <bean class="org.dspace.layout.CrisLayoutTopComponent">
                         <property name="discoveryConfigurationName" value="patente" />
                         <property name="sortField" value="dc.date.accessioned" />
@@ -207,6 +185,27 @@
                 </bean>
                 <bean class="org.dspace.layout.CrisLayoutFacetComponent">
                     <property name="discoveryConfigurationName" value="patente" />
+                    <property name="style" value="col-md-12"/>
+                </bean>
+            </list>
+          </list>
+        </constructor-arg>
+    </bean>
+
+    <bean class="org.dspace.layout.CrisLayoutSection" id="sectionsoftware">
+        <constructor-arg name="id" value="softwares"/>
+        <constructor-arg name="visible" value="false"/>
+        <constructor-arg name="sectionComponents">
+          <list>
+            <list>
+                <bean class="org.dspace.layout.CrisLayoutSearchComponent">
+                    <property name="discoveryConfigurationName" value="software" />
+                    <property name="style" value="col-md-12"/>
+                </bean>
+            </list>
+            <list>
+                <bean class="org.dspace.layout.CrisLayoutFacetComponent">
+                    <property name="discoveryConfigurationName" value="software" />
                     <property name="style" value="col-md-12"/>
                 </bean>
             </list>
@@ -241,19 +240,19 @@
                             <bean class="org.dspace.layout.CrisLayoutCountersComponent.CounterSettings">
                                 <property name="discoveryConfigurationName" value="person"/>
                                 <property name="label" value="rprofiles"/>
-                                <property name="icon" value="fas fa-user-circle fa-4x"/>
+                                <property name="icon" value="fas fa-users fa-4x"/>
                                 <property name="link" value="/explore/researcherprofiles"/>
                             </bean>
                             <bean class="org.dspace.layout.CrisLayoutCountersComponent.CounterSettings">
                                 <property name="discoveryConfigurationName" value="project_funding"/>
                                 <property name="label" value="project_funding"/>
-                                <property name="icon" value="fas fa-flask fa-4x"/>
+                                <property name="icon" value="fas fa-cogs fa-4x"/>
                                 <property name="link" value="/explore/fundings_and_projects"/>
                             </bean>
                             <bean class="org.dspace.layout.CrisLayoutCountersComponent.CounterSettings">
                                 <property name="discoveryConfigurationName" value="researchoutputs"/>
                                 <property name="label" value="publications"/>
-                                <property name="icon" value="fas fa-copy fa-4x"/>
+                                <property name="icon" value="fas fa-file-alt fa-4x"/>
                                 <property name="link" value="/explore/researchoutputs"/>
                             </bean>
                             <bean class="org.dspace.layout.CrisLayoutCountersComponent.CounterSettings">
@@ -261,6 +260,12 @@
                                 <property name="label" value="patentes"/>
                                 <property name="icon" value="fas fa-atom fa-4x"/>
                                 <property name="link" value="/explore/patentes"/>
+                            </bean>
+                            <bean class="org.dspace.layout.CrisLayoutCountersComponent.CounterSettings">
+                                <property name="discoveryConfigurationName" value="software"/>
+                                <property name="label" value="softwares"/>
+                                <property name="icon" value="fas fa-laptop fa-4x"/>
+                                <property name="link" value="/explore/softwares"/>
                             </bean>
                         </list>
                     </property>
@@ -272,7 +277,7 @@
                     <property name="sortField" value="dc.date.accessioned" />
                     <property name="order" value="desc" />
                     <property name="style" value="col-md-6 dashboard-card recent-items"/>
-                    <property name="numberOfItems" value="10"/>
+                    <property name="numberOfItems" value="5"/>
                 </bean>
                 <bean class="org.dspace.layout.CrisLayoutTopComponent">
                     <property name="discoveryConfigurationName" value="homePageTopItems" />
